@@ -1,7 +1,24 @@
 #!/usr/bin/env python3
 
-import socket, sys, os, time
-import cfg
+import socket, sys, os
+
+def settings():
+    
+    settings = {}
+    file = "twitch-utils/.config"
+    
+    if 'XDG_CONFIG_HOME' in os.environ:
+        loc = os.path.join(os.environ['XDG_CONFIG_HOME'], file)
+    else:
+        loc = os.path.join(os.environ['HOME'], '.config', file)
+
+    with open(loc, 'r') as f:
+        for line in f.readlines():
+            split = line.split("=")
+            if len(split) > 1:
+                settings[split[0]] = "=".join(split[1:]).strip()
+
+    return settings
 
 def send(chan, msg, name, oauth):
 
@@ -24,4 +41,5 @@ def send(chan, msg, name, oauth):
     s.close()
 
 if __name__ == '__main__':
-    send(sys.argv[1], sys.argv[2], cfg.read()['name'], cfg.read()['auth'])
+    secret = settings()
+    send(sys.argv[1], sys.argv[2], secret['name'], secret['auth'])

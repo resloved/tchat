@@ -1,7 +1,6 @@
 #!/usr/bin/sh
 
 tmux rename-window "#$1"
-tmux split-window -l 3 "twitch-send $1"
+tmux split-window -l 3 "twitch-message $1"
 clear
 twitch-chat $1 
-
