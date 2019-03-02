@@ -1,0 +1,14 @@
+#!/usr/bin/sh
+
+n2c () {
+    while read inp
+    do
+        usr=$(echo $inp | awk '{print $1}')
+        msg=$(echo $inp | cut -d' ' -f2-)
+        hex=$(echo $usr | shasum | awk '{print $1}')
+        num=$(((16#$hex) % 6))
+        echo -e "$(tput bold)$(tput setaf ${num#-})$usr$(tput sgr0): $msg"
+    done
+}
+
+trecv $1 | n2c

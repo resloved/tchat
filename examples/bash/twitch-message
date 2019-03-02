@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+
+while :
+do
+    clear
+    printf "$(tput setaf 0)Send message$(tput sgr0)\r"
+    read msg
+    tsend $1 "$msg"
+done
