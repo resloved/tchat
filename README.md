@@ -27,5 +27,5 @@ trecv channel | awk { print $0 }
 trecv channel | grep "filter"
 
 # Automating
-for x in {1..5}; do tsend channel message; sleep 30; done
+for x in {1..5}; do tsend channel username message; sleep 30; done
 ```
