@@ -6,16 +6,12 @@
 
 ```bash
 trecv channel
-
-# username This is a message
 ```
 
 ### tsend
 
 ```bash
-tsend channel message user
-
-# No output
+tsend channel username message
 ```
 
 ## Usage
