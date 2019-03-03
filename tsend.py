@@ -2,25 +2,19 @@
 
 import socket, sys, os
 
-def settings():
+def auth(name):
     
-    settings = {}
-    file = "twitch-utils/.config"
+    folder = "twitch-chat-utils/" + name
     
     if 'XDG_CONFIG_HOME' in os.environ:
-        loc = os.path.join(os.environ['XDG_CONFIG_HOME'], file)
+        loc = os.path.join(os.environ['XDG_CONFIG_HOME'], folder)
     else:
-        loc = os.path.join(os.environ['HOME'], '.config', file)
+        loc = os.path.join(os.environ['HOME'], '.config', folder)
 
     with open(loc, 'r') as f:
-        for line in f.readlines():
-            split = line.split("=")
-            if len(split) > 1:
-                settings[split[0]] = "=".join(split[1:]).strip()
+        return f.read() 
 
-    return settings
-
-def send(chan, msg, name, oauth):
+def send(chan, name, msg, oauth):
 
     HOST = "irc.twitch.tv"
     PORT = 6667
@@ -41,5 +35,4 @@ def send(chan, msg, name, oauth):
     s.close()
 
 if __name__ == '__main__':
-    secret = settings()
-    send(sys.argv[1], sys.argv[2], secret['name'], secret['auth'])
+    send(sys.argv[1], sys.argv[2], sys.argv[3], auth(sys.argv[2]))
