@@ -21,7 +21,7 @@ tsend channel username message
 trecv channel >> channel-logs.txt
 
 # Parsing
-trecv channel | awk { print $0 }
+trecv channel | awk { print $1 }
 
 # Filtering
 trecv channel | grep "filter"
