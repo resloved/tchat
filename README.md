@@ -1,29 +1,24 @@
-Twitch-Utils
+# Twitch-Utils
 
-DESCRIPTION
+## Commands
 
-Installation
+### trecv
 
-Blah blah...
-
-Commands
-
-trecv
 ```bash
 trecv channel
 
-# Example output
 # username This is a message
 ```
 
-tsend
+### tsend
+
 ```bash
 tsend channel message user
 
 # No output
 ```
 
-Usage
+## Usage
 
 ```bash
 # Logging
@@ -38,7 +33,3 @@ trecv channel | grep "filter"
 # Automating
 for x in {1..5}; do tsend channel message; sleep 30; done
 ```
-
-Examples
-
-EXPLAIN FOLDER
