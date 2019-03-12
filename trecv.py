@@ -2,7 +2,7 @@
 
 import socket, sys, re
 
-def recv(chan, msgs=None):
+def recv(chan):
 
     HOST = "irc.twitch.tv"
     CHAN = "#" + chan
@@ -21,11 +21,7 @@ def recv(chan, msgs=None):
             s.send("PONG tmi.twitch.tv\r\n".encode("utf-8"))  
         for msg in r.split("\n"):
             if "PRIVMSG" in msg:
-                if msgs:
-                    msgs.append(parse(msg))
-                else:
-                    print(parse(msg))
-                    sys.stdout.flush()
+                print(parse(msg), flush=True)
 
 def parse(raw):
     regex = r"^:\w+!\w+@\w+\.tmi\.twitch\.tv PRIVMSG #\w+ :"

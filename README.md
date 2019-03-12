@@ -28,4 +28,7 @@ trecv channel | grep "filter"
 
 # Automating
 for x in {1..5}; do tsend channel username message; sleep 30; done
+
+# Respond
+trecv channel | awk '$2 ~ /!command/ { system("tsend channel username message") }'
 ```
