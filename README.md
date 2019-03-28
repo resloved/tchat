@@ -1,4 +1,4 @@
-# twitch-chat-utils
+# tchat
 
 ## Commands
 
