@@ -3,19 +3,15 @@
 import socket, sys, os
 
 def auth(name):
-    
     folder = "twitch-chat-utils/" + name
-    
     if 'XDG_CONFIG_HOME' in os.environ:
         loc = os.path.join(os.environ['XDG_CONFIG_HOME'], folder)
     else:
         loc = os.path.join(os.environ['HOME'], '.config', folder)
-
     with open(loc, 'r') as f:
         return f.read() 
 
 def send(chan, name, msg, oauth):
-
     HOST = "irc.twitch.tv"
     PORT = 6667
     CHAN = "#" + sys.argv[1].lower()

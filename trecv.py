@@ -3,7 +3,6 @@
 import socket, sys, re
 
 def recv(chan):
-
     HOST = "irc.twitch.tv"
     CHAN = "#" + chan
     NICK = "justinfan12345"
